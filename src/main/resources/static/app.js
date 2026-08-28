@@ -98,7 +98,8 @@ document.querySelector('#order-form').addEventListener('submit', async event => 
         await request('/pedidos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
         event.currentTarget.reset();
         showMessage('Pedido creado. Ya aparece en seguimiento.');
-        await loadOrders();
+        await Promise.all([loadProducts(), loadOrders()]);
+        document.querySelector('.orders-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (error) {
         showMessage(error.message, true);
     }

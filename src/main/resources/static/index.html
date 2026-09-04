@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultima Milla | Pedidos</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand"><span class="brand-mark">UM</span><span>ULTIMA MILLA</span></div>
+        <span class="live"><span class="dot"></span> Sistema activo</span>
+    </header>
+
+    <main class="page-shell">
+        <section class="hero">
+            <div>
+                <p class="eyebrow">CENTRO DE PEDIDOS</p>
+                <h1>Elige tu próximo par.</h1>
+                <p class="hero-copy">Consulta disponibilidad y crea pedidos en segundos.</p>
+            </div>
+            <div class="hero-note"><strong id="product-count">0</strong><span>modelos disponibles</span></div>
+        </section>
+
+        <section class="workspace">
+            <div class="catalog-panel">
+                <div class="section-heading">
+                    <div><p class="eyebrow">CATÁLOGO</p><h2>Zapatos disponibles</h2></div>
+                    <button class="text-button" id="refresh-products" type="button">Actualizar</button>
+                </div>
+                <div id="products" class="product-grid"><p class="loading">Cargando catálogo...</p></div>
+            </div>
+
+            <aside class="order-panel">
+                <p class="eyebrow">NUEVO PEDIDO</p>
+                <h2>Reserva tu par</h2>
+                <form id="order-form">
+                    <label for="cliente">Nombre del cliente</label>
+                    <input id="cliente" name="cliente" type="text" placeholder="Ej. Juan Pérez" required>
+                    <label for="productoId">Producto</label>
+                    <select id="productoId" name="productoId" required><option value="">Selecciona un modelo</option></select>
+                    <label for="cantidad">Cantidad</label>
+                    <input id="cantidad" name="cantidad" type="number" min="1" value="1" required>
+                    <label for="prioridad">Prioridad</label>
+                    <select id="prioridad" name="prioridad">
+                        <option value="BAJA">Baja</option>
+                        <option value="MEDIA" selected>Media</option>
+                        <option value="ALTA">Alta</option>
+                        <option value="URGENTE">Urgente</option>
+                    </select>
+                    <button class="primary-button" type="submit">Crear pedido</button>
+                </form>
+                <p id="message" class="message" role="status"></p>
+            </aside>
+        </section>
+
+        <section class="orders-panel">
+            <div class="section-heading">
+                <div><p class="eyebrow">SEGUIMIENTO</p><h2>Mis pedidos</h2></div>
+                <button class="text-button" id="refresh-orders" type="button">Actualizar</button>
+            </div>
+            <div id="orders" class="orders-list"><p class="loading">Cargando pedidos...</p></div>
+        </section>
+    </main>
+    <script src="/app.js"></script>
+</body>
+</html>

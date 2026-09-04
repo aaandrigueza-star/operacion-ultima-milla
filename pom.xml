@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!--
+		Este archivo pom.xml define la configuración principal del proyecto Maven.
+		Aquí se indica qué framework usa la app, qué versión de Java necesita,
+		qué dependencias debe descargar y cómo se debe compilar la aplicación.
+	-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.1.1</version>
+		<relativePath/> <!-- busca la configuración base de Spring Boot en Maven Central -->
+	</parent>
+
+	<groupId>com.suministrosnorte</groupId>
+	<artifactId>operacion-ultima-milla</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Operación Última Milla</name>
+	<description>Backend para gestionar inventario, productos y pedidos de última milla.</description>
+
+	<!--
+		Estas propiedades indican el entorno de ejecución del proyecto.
+		java.version = 21 porque el equipo actual tiene Java 21 instalado y es compatible
+		con Spring Boot 4.1.1. Esto evita fallos de compilación por usar una versión no soportada.
+	-->
+	<properties>
+		<java.version>21</java.version>
+	</properties>
+
+	<dependencies>
+		<!--
+			spring-boot-starter-webmvc:
+			activa el desarrollo de una API REST con Spring MVC.
+			Permite crear controladores, endpoints y manejar peticiones HTTP.
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+
+		<!--
+			spring-boot-starter-data-jpa:
+			agrega soporte para Java Persistence API (JPA), entidades, repositorios y manejo
+			automático de persistencia con bases de datos relacionales.
+			Es la base para guardar productos, ventas y pedidos.
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!--
+			H2 Database:
+			es una base de datos en memoria/archivo muy útil para desarrollo y pruebas.
+			En este proyecto se usa como base local con archivo ./data/inventario para que
+			los datos queden guardados de forma permanente en disco.
+		-->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!--
+			spring-boot-starter-webmvc-test:
+			contiene librerías para pruebas automatizadas del backend y del controlador.
+			Permite ejecutar tests con JUnit y Spring Test.
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!--
+				spring-boot-maven-plugin:
+				permite compilar y ejecutar la aplicación Spring Boot con el comando
+				mvn spring-boot:run o ejecutar la app empaquetada como jar.
+			-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
